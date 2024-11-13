@@ -1,8 +1,66 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var facts = new List<string>
+    {
+        "90% of the data in the world was generated in the last two years",
+        "The first 1GB hard drive cost $40,000",
+        "The first computer virus was created in 1983",
+        "More than 570 new websites are created every minute",
+        "The first email was sent by Ray Tomlinson to himself in 1971",
+        "There are over 3.5 billion Google searches per day",
+        "The first computer mouse was made of wood",
+        "The first 1TB hard drive was released in 2007",
+        "The first domain name ever registered was Symbolics.com",
+        "The first webcam was used to monitor a coffee pot"
+    };
+    var random = new Random();
+    var randomFact = facts[random.Next(facts.Count)];
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-item">
+            <span>🖨️ Print Document</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📜 View History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>💵 Buy Paper</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📊 History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>🖨️ Manage Printer</span>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="welcome-section">
+            <p class="welcome-back">Welcome back,</p>
+            <h1 class="role-title">Student Printing<br>Service Officer</h1>
+
+            <div class="fact-box">
+                <p class="fact-text">
+                    Do you know that:<br>
+                    @randomFact
+                </p>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary">Manage Printers</button>
+                <button class="btn btn-secondary">View History</button>
+            </div>
+        </div>
+
+        <div class="logo-section">
+            <div class="bk-logo">
+                <img src="~/img/bklogo.png" alt="BK" style="width:400px"  />
+            </div>
+        </div>
+    </main>
+</body>
+</html>

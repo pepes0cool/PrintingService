@@ -17,5 +17,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\SSPS.Models\SSPS.Models.csproj" />
+		<ProjectReference Include="..\SSPS.Utility\SSPS.Utility.csproj" />
+	</ItemGroup>
+	
 </Project>

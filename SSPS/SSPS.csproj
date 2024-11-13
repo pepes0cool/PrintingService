@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
     <Folder Include="Areas\SPSO\Controllers\" />
     <Folder Include="Areas\SPSO\Views\" />
     <Folder Include="Areas\Student\Views\" />

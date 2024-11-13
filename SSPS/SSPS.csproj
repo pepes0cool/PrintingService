@@ -23,6 +23,7 @@
     <Folder Include="Areas\SPSO\Controllers\" />
     <Folder Include="Areas\SPSO\Views\" />
     <Folder Include="Areas\Student\Views\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

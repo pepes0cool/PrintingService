@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SSPS.Models;
 
 namespace SSPS.DataAccess.Repository.IRepository
 {
-    public interface IPrinterRepository : IRepository<Printer>
+    public interface IUnitOfWork
     {
-        void Update(Printer printer);
+        IPrinterRepository Printer { get; }
+        void Save();
     }
-
-
 }

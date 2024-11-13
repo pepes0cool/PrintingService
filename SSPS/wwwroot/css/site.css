@@ -1,4 +1,3 @@
-ht <style >
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +12,15 @@ ht <style >
 }
 
 body {
-    background-color: #f5f5f5;
+    background-image: url('/img/bg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: -20px;
+    position:relative;
+    z-index:1;
 }
 
 .navbar {
@@ -39,17 +46,20 @@ body {
 .nav-item {
     cursor: pointer;
 }
+
 .custom-input {
-    border-radius: 10px; /* Adjust the border radius for softer corners */
-    border: 1px solid #ccc; /* Adjust the border color */
-    padding: 10px; /* Adjust the padding for a better look */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus state */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
-.custom-input:focus {
-        border-color: #007bff; /* Change border color on focus */
-        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Enhance shadow on focus */
-}
+
+    .custom-input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    }
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -86,6 +96,17 @@ body {
 
 .welcome-section {
     flex: 1;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .welcome-back {
@@ -107,6 +128,17 @@ body {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     max-width: 400px;
+    animation: slideIn 1s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 .fact-text {
@@ -161,5 +193,3 @@ body {
         width: 100%;
         height: 100%;
     }
-
-</style >

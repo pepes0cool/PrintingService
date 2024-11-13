@@ -39,7 +39,17 @@ body {
 .nav-item {
     cursor: pointer;
 }
-
+.custom-input {
+    border-radius: 10px; /* Adjust the border radius for softer corners */
+    border: 1px solid #ccc; /* Adjust the border color */
+    padding: 10px; /* Adjust the padding for a better look */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus state */
+}
+.custom-input:focus {
+        border-color: #007bff; /* Change border color on focus */
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Enhance shadow on focus */
+}
 .sidebar {
     position: fixed;
     left: 0;

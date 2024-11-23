@@ -4,9 +4,9 @@ Welcome to the Smart Printing Service project! This platform is designed to simp
 # Technologies Used
 This project utilizes the following technologies:
 
-**Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5.3.3
-**Backend**: .NET Core MVC
-**Database**: MS SQL Server
+- **Frontend**: HTML5, CSS3, JavaScript, Bootstrap 5.3.3
+- **Backend**: .NET Core MVC
+- **Database**: MS SQL Server
 Setup and Installation
 Follow these steps to set up the project locally:
 

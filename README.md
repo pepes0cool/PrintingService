@@ -1,5 +1,5 @@
-### Smart Printing Service for Students at HCMUT
-## Welcome to the Smart Printing Service project! This platform is designed to simplify and enhance the printing experience for students at Ho Chi Minh City University of Technology (HCMUT). By leveraging modern technologies, this service streamlines printing tasks, reduces waste, and improves accessibility.
+# Smart Printing Service for Students at HCMUT
+Welcome to the Smart Printing Service project! This platform is designed to simplify and enhance the printing experience for students at Ho Chi Minh City University of Technology (HCMUT). By leveraging modern technologies, this service streamlines printing tasks, reduces waste, and improves accessibility.
 
 # Technologies Used
 This project utilizes the following technologies:

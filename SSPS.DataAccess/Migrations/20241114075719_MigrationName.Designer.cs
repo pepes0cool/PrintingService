@@ -12,8 +12,8 @@ using SSPS.DataAccess.Data;
 namespace SSPS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241113084926_Identity User for authentication")]
-    partial class IdentityUserforauthentication
+    [Migration("20241114075719_MigrationName")]
+    partial class MigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

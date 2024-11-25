@@ -6,8 +6,11 @@ using SSPS.DataAccess.Repository.IRepository;
 using SSPS.Models;
 namespace SSPS.Areas.SPSO.Controllers
 {
+    [Area("SPSO")]
+    [Route("SPSO/[controller]/[action]")]
     public class PrinterController : Controller
     {
+
         private readonly ILogger<PrinterController> _logger;
         private readonly IUnitOfWork _unitOfWork;
         public PrinterController(ILogger<PrinterController> logger, IUnitOfWork unitOfWork)
@@ -50,7 +53,7 @@ namespace SSPS.Areas.SPSO.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditPost(Printer obj)
+        public IActionResult Edit(Printer obj)
         {
             if (ModelState.IsValid)
             {

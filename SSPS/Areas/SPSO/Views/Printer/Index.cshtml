@@ -1,0 +1,89 @@
+﻿@model List<Printer>
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-item">
+            <span>🖨️ Print Document</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📜 View History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>💵 Buy Paper</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📊 History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>🖨️ Manage Printer</span>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="card shadow border-0 mt-4">
+            <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="text-white py-2">Printer List</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="row pb-3">
+                    
+                    <div class="col-6 text-end">
+                        <a asp-controller="Printer" asp-action="Create" class="btn btn-primary">
+                            <i class="bi bi-plus-circle"></i> Create New Printer
+                        </a>
+                    </div>
+
+                </div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Printer Name
+                            </th>
+                            <th>
+                                Model
+                            </th>
+                            <th>SerialNumber</th>
+                            <th>paperNumber</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var obj in Model.OrderBy(u => u.Id))
+                        {
+                            <tr>
+                                <td>@obj.Name</td>
+                                <td>
+                                    @obj.Model
+                                </td>
+                                <td>
+                                    @obj.SerialNumber
+                                </td>
+                                <td>
+                                    @obj.paperNumber
+                                </td>
+                                <td>
+                                    <div class="w-75 btn-group" role="group">
+                                        <a asp-controller="Printer" asp-action="Edit" asp-route-ID="@obj.Id" class="btn btn-primary mx-2">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </a>
+                                        <a asp-controller="Printer" asp-action="Delete" asp-route-ID="@obj.Id" class="btn btn-danger mx-2">
+                                            <i class="bi bi-trash-fill"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

@@ -19,6 +19,38 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">

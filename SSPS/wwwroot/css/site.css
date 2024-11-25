@@ -193,3 +193,7 @@ body {
         width: 100%;
         height: 100%;
     }
+.custom-card-header {
+    background-color: #8A70D6;
+    border: 2px solid #FFFFFF; /* Adjust the border width and color as needed */
+}

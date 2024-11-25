@@ -2,6 +2,38 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">
@@ -22,57 +54,56 @@
     </aside>
 
     <main class="main-content">
-        <div class="card shadow border-0 mt-4">
-            <div class="card-header bg-secondary bg-gradient ml-0 py-3">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <h2 class="text-white py-2">Update Printer</h2>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card shadow border-0 mt-4 col-12 col-md-10 col-lg-8">
+                    <div class="card-header border border-white p-3" style="background-color:#8A70D6;
+                        border: 2px solid #FFFFFF; margin-top:10px">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2 class="text-white py-2">Edit Printer</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" class="pb-3">
+                            <div class="border p-3">
+                                <div class="form-floating py-2">
+                                    <input asp-for="Name" class="form-control border-0 shadow" />
+                                    <label asp-for="Name" class="ms-2"></label>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating py-2">
+                                    <input asp-for="Model" class="form-control border-0 shadow" />
+                                    <label asp-for="Model" class="ms-2"></label>
+                                    <span asp-validation-for="Model" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating py-2">
+                                    <input asp-for="SerialNumber" class="form-control border-0 shadow" />
+                                    <label asp-for="SerialNumber" class="ms-2"></label>
+                                    <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating py-2">
+                                    <input asp-for="paperNumber" class="form-control border-0 shadow" />
+                                    <label asp-for="paperNumber" class="ms-2"></label>
+                                    <span asp-validation-for="paperNumber" class="text-danger"></span>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class=" col-md-6">
+                                        <button type="submit" class="btn btn-primary form-control">Edit</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a asp-area="SPSO" asp-controller="Printer" asp-action="Index" class="btn btn-outline-primary border form-control">
+                                            Back to List
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="card-body p-4">
-                <form method="post">
-                    <input asp-for="Id" hidden />
-                    <div class="border p-3 mt-4">
-                        @* <div asp-validation-summary="All"></div> *@
-                        <div class="form-floating py-2 col-12">
-                            <input asp-for="Name" class="form-control border-0 shadow" />
-                            <label asp-for="Name" class="ms-2"></label>
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        <div class="form-floating py-2 col-12">
-                            <input asp-for="Model" class="form-control border-0 shadow" />
-                            <label asp-for="Model" class="ms-2"></label>
-                            <span asp-validation-for="Model" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-floating py-2 col-12">
-                            <input asp-for="SerialNumber" class="form-control border-0 shadow" />
-                            <label asp-for="SerialNumber" class="ms-2"></label>
-                            <span asp-validation-for="SerialNumber" class="text-danger"></span>
-                        </div>
-                        <div class="form-floating py-2 col-12">
-                            <input asp-for="paperNumber" class="form-control border-0 shadow" />
-                            <label asp-for="paperNumber" class="ms-2"></label>
-                            <span asp-validation-for="paperNumber" class="text-danger"></span>
-                        </div>
-
-                        <div class="row pt-2">
-                            <div class="col-6 col-md-3">
-                                <button type="submit" class="btn btn-primary form-control">Update</button>
-                            </div>
-
-                            <div class="col-6 col-md-3">
-                                <a asp-area="SPSO" asp-controller="Printer" asp-action="Index" class="btn btn-outline-primary border form-control">
-                                    Back to List
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
-
     </main>
 </body>
 </html>

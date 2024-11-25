@@ -19,7 +19,14 @@ namespace SSPS.DataAccess.Repository
         }
         public void Update(Printer printer)
         {
-            _db.Update(printer);
+            var objFromDb = _db.printers.FirstOrDefault(p => p.Id == printer.Id);
+            if (objFromDb != null)
+            {
+                objFromDb.Name = printer.Name;
+                objFromDb.Model = printer.Model;
+                objFromDb.SerialNumber = printer.SerialNumber;
+                objFromDb.paperNumber = printer.paperNumber;
+            }
         }
     }
 }

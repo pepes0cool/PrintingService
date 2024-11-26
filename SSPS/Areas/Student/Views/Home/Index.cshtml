@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using SSPS.Models
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
     ViewData["Title"] = "Home Page";
     var facts = new List<string>
     {
@@ -15,6 +19,7 @@
     };
     var random = new Random();
     var randomFact = facts[random.Next(facts.Count)];
+    var user = await UserManager.GetUserAsync(User);
 }
 
 <!DOCTYPE html>
@@ -74,7 +79,7 @@
     <main class="main-content">
         <div class="welcome-section">
             <p class="welcome-back">Welcome back,</p>
-            <h1 class="role-title">Student Printing<br>Service Officer</h1>
+            <h1 class="role-title">@user.UserName</h1>
 
             <div class="fact-box">
                 <p class="fact-text">
@@ -84,7 +89,7 @@
             </div>
 
             <div class="button-group">
-                <button class="btn btn-primary" >Manage Printers</button>
+                <button class="btn" style="background-color:#8A70D6; font-style:italic; text-decoration-color:initial">Print something?</button>
                 <button class="btn btn-secondary ">View History</button>
             </div>
         </div>

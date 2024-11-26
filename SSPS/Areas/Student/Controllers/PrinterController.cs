@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace SSPS.Areas.Student.Controllers
 {
-    [Route("[controller]")]
+    [Area("Student")]
     public class PrinterController : Controller
     {
         private readonly ILogger<PrinterController> _logger;

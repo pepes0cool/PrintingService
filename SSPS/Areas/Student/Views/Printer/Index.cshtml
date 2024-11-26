@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printer Status Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #d9ccf3;
+            color: #444;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+            .status.ready {
+                background-color: #d4f4d4;
+                color: #2c7d2c;
+            }
+
+            .status.printing {
+                background-color: #d3e3ff;
+                color: #356bc6;
+            }
+
+            .status.error {
+                background-color: #fbdcdc;
+                color: #c53030;
+            }
+
+            .status.offline {
+                background-color: #f2f2f2;
+                color: #7e7e7e;
+            }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 10px;
+            width: 100%;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+            .progress.paper {
+                background-color: #ff6b6b;
+            }
+
+            .progress.ink {
+                background-color: #ffd93d;
+            }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .button.on {
+                background-color: #5cb85c;
+                color: white;
+            }
+
+            .button.off {
+                background-color: #d9534f;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Printer Status Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <!-- Printer Card Template -->
+        @* <div class="card">
+            <div class="card-header">101A1</div>
+            <div class="status ready">Ready</div>
+            <div class="metrics">
+                <div>Printed: 204</div>
+                <div>Fulfilled: 180</div>
+                <div>Efficiency: 88%</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress paper" style="width: 10%;"></div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress ink" style="width: 70%;"></div>
+            </div>
+            <button class="button off">Off</button>
+        </div>
+
+        <!-- More Printer Cards... -->
+        <div class="card">
+            <div class="card-header">102A1</div>
+            <div class="status printing">Printing</div>
+            <div class="metrics">
+                <div>Printed: 167</div>
+                <div>Fulfilled: 167</div>
+                <div>Efficiency: 100%</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress paper" style="width: 50%;"></div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress ink" style="width: 40%;"></div>
+            </div>
+            <button class="button off">Off</button>
+        </div> *@
+    </div>
+
+
+</body>
+</html>

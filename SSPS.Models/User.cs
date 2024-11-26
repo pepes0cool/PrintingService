@@ -14,5 +14,6 @@ namespace SSPS.Models
         public string? MSSV { get; set; }
         [Required]
         public string? Name { get; set; }
+        public int? PaperBalance { get; set; }
     }
 }

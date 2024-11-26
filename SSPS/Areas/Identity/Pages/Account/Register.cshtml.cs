@@ -111,6 +111,7 @@ namespace SSPS.Areas.Identity.Pages.Account
             public string? Name { get; set; }
             [Required]
             public string? MSSV { get; set; }
+
         }
 
 
@@ -137,6 +138,7 @@ namespace SSPS.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.MSSV = Input.MSSV;
                 user.Name = Input.Name;
+                user.PaperBalance = 0;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

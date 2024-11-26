@@ -20,6 +20,7 @@
     var random = new Random();
     var randomFact = facts[random.Next(facts.Count)];
     var user = await UserManager.GetUserAsync(User);
+   
 }
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">
-            <span>🖨️ Print Document</span>
+            <a asp-controller="Printer" asp-action="Index" asp-area="Student"class="text-decoration-none">🖨️ Print Document</a>
         </div>
         <div class="sidebar-item">
             <span>📜 View History</span>
@@ -70,16 +71,16 @@
         <div class="sidebar-item">
             <span>📊 History</span>
         </div>
-            <div class="sidebar-item">
-                <span>🖨️ Manage Printer</span>
-            </div>
 
     </aside>
 
     <main class="main-content">
         <div class="welcome-section">
             <p class="welcome-back">Welcome back,</p>
-            <h1 class="role-title">@user.UserName</h1>
+			@if (SignInManager.IsSignedIn(User))
+			{
+                <h1 class="role-title">@user.UserName</h1>
+			})
 
             <div class="fact-box">
                 <p class="fact-text">
@@ -89,7 +90,9 @@
             </div>
 
             <div class="button-group">
-                <button class="btn" style="background-color:#8A70D6; font-style:italic; text-decoration-color:initial">Print something?</button>
+                <a asp-controller="Printer" asp-action="Index" asp-area="Student" class="btn" style="background-color:#8A70D6; font-style:italic; text-decoration-color:initial;">
+                    Print something?
+                </a>
                 <button class="btn btn-secondary ">View History</button>
             </div>
         </div>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model List<Printer>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +19,6 @@
             background-color: #d9ccf3;
             color: #444;
             margin-top: 60px; /* Add margin to prevent overlap with navbar */
-            margin-left: 220px;
         }
 
         .container {
@@ -150,9 +150,11 @@
         <div class="sidebar-item">
             <span>📊 History</span>
         </div>
-        <div class="sidebar-item">
+        @if(User.IsInRole("SPSO")){
+            <div class="sidebar-item">
             <span>🖨️ Manage Printer</span>
-        </div>
+            </div>
+        }
 
     </aside>
     <div class="header">
@@ -195,6 +197,20 @@
             </div>
             <button class="button off">Off</button>
         </div> *@
+        @foreach (var obj in Model.OrderBy(u => u.Id)){
+            <div class="card">
+                <div class="card-header" style="margin-top:5px">@obj.Name</div>
+                <div class="img-fluid" >
+                    <img src="~/img/printer.png" style="width:100px" />
+                </div>
+				<div class="status ready" style="margin-top:5px">Status: Ready</div>
+				<div class="metrics">
+					<div>Paper left: @obj.paperNumber</div>
+				</div>
+				<button class="button on" style="margin-top:5px">ON</button>
+                <button class="btn btn-primary" style="margin-top:5px"> Choose this printer</button>
+            </div>
+        }
     </div>
 
 

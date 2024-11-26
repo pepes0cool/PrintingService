@@ -5,6 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SSPS.DataAccess;
+using SSPS.DataAccess.Repository.IRepository;
+using SSPS.Models;
 
 namespace SSPS.Areas.Student.Controllers
 {
@@ -12,15 +15,17 @@ namespace SSPS.Areas.Student.Controllers
     public class PrinterController : Controller
     {
         private readonly ILogger<PrinterController> _logger;
-
-        public PrinterController(ILogger<PrinterController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public PrinterController(ILogger<PrinterController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Printer> objPrinter = _unitOfWork.Printer.GetAll().ToList();
+            return View(objPrinter);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

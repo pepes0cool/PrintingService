@@ -208,7 +208,7 @@
 					<div>Paper left: @obj.paperNumber</div>
 				</div>
 				<button class="button on" style="margin-top:5px">ON</button>
-                <button class="btn btn-primary" style="margin-top:5px"> Choose this printer</button>
+                <a asp-controller="Printer" asp-action="Print" asp-area="Student" asp-route-id="@obj.Id" class="button" style="margin-top:5px">Choose this printer</a>
             </div>
         }
     </div>

@@ -12,10 +12,12 @@ namespace SSPS.DataAccess.Repository
     {
         private readonly ApplicationDbContext _db;
         public IPrinterRepository Printer { get; private set; }
+        public IHistoryRepository History { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Printer = new PrinterRepository(_db);
+            History = new HistoryRepository(_db);
         }
         public void Save()
         {

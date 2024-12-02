@@ -1,0 +1,98 @@
+@model User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-item">
+            <span>🖨️ Print Document</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📜 View History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>💵 Buy Paper</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📊 History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>🖨️ Manage Printer</span>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card shadow border-0 mt-4 col-12 col-md-10 col-lg-8" style="background-color:aliceblue">
+                    <div class="card-header border border-white p-3" style="background-color:#8A70D6;
+                        border: 2px solid #FFFFFF; margin-top:10px">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2 class="text-white py-2">Buy Papers</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" class="pb-3">
+                            <div class="border p-3">
+                                <div class="form-floating py-2">
+                                    <input asp-for="PaperBalance" class="form-control border-0 shadow" />
+                                    <label asp-for="PaperBalance" class="ms-2"></label>
+                                    <span asp-validation-for="PaperBalance" class="text-danger"></span>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class=" col-md-6">
+                                        <button type="submit" class="btn btn-primary form-control">Number of pages</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a asp-area="Student" asp-controller="Buy" asp-action="Index" class="btn btn-outline-primary border form-control"
+                                        style="background-color:seagreen">
+                                            Back
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+

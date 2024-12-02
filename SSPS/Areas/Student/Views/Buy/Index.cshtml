@@ -1,0 +1,60 @@
+@model List<Buy>
+
+<!DOCTYPE html>
+<head>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
+<main class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span>🖨️ Print Document</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📜 View History</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>💵 Buy Paper</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📊 History</span>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="col-md-12">
+                <a asp-action="BuyPages" asp-asp-controller="Buy" class="btn btn-sucess">Buy Pages </a>
+            </div>          
+        </div>
+    </div>
+</main>

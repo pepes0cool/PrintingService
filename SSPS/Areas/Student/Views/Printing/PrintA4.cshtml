@@ -1,15 +1,6 @@
 @model User
 
 <!DOCTYPE html>
-<head>
-    <style>
-        
-    </style>
-</head>
-
-            <!-- Main Content -->         
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -118,25 +109,28 @@
                 </div>
             </aside>
 
+            <div class="header">
+                <h1>Print Document</h1>
+            </div>
 
             <div class="container">
                 <div class="logo">
-                    <img src="img src="~/img/bklogo1.png" alt="Logo">
+                    <img src="~/img/bklogo1.png" alt="Logo">
                 </div>
                 <h2>Set option</h2>
+                
                 <div class="balance">
                     Current Balance: <span id="balance"> @Model.PaperBalance</span>
                 </div>
-
-                <label for="numPages">Number of pages:</label>
-                <input type="number" id="numPages" min="1" value="1" oninput="calculateTotal()">
-                <div class="total">
-                    Total: <span id="total">500 VND</span>
-                </div>
-
-                <button id="proceedBtn" asp-action="Index" asp-controller="PrintingController">Proceed</button>
+                <form asp-action="PrintA4" asp-controller="Printing">
+                  <label for="numPages">Number of pages:</label>
+                  <input type="number" id="numPages" min="1" value="1" oninput="calculateTotal()">
+                  <div class="total">
+                      Total: <span id="total">500 VND</span>
+                  </div>
+                  <button id="proceedBtn" type="submit">Proceed</button>
+                </form>
             </div>
-    </div>
     </div>
     </div>
 </main>

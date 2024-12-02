@@ -43,7 +43,7 @@ namespace SSPS.Areas.Student.Controllers
             {
                 _unitOfWork.User.AddPage(obj, numPage);
                 _unitOfWork.Save();
-                TempData["Success"] = "Page balance updated successfully!!";
+                TempData["Success"] = "Paper balance updated successfully!!";
                 return RedirectToAction("Index");
             }
             return View();

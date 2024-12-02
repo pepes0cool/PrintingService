@@ -37,13 +37,14 @@ namespace SSPS.Areas.Student.Controllers
 
 
         [HttpPost]
+        
         public IActionResult PrintA4(User obj, int numPage)
         {
             if (ModelState.IsValid)
             {
                 _unitOfWork.User.AddPage(obj, numPage);
                 _unitOfWork.Save();
-                TempData["Success"] = "Page balance updated successfully!!";
+                TempData["Success"] = "Printing updated successfully!!";
                 return RedirectToAction("Index");
             }
             return View();

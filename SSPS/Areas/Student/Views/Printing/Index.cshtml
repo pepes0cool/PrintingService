@@ -1,0 +1,225 @@
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #d9ccf3;
+            color: #444;
+            margin-top: 60px; /* Add margin to prevent overlap with navbar */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+            .status.ready {
+                background-color: #d4f4d4;
+                color: #2c7d2c;
+            }
+
+            .status.printing {
+                background-color: #d3e3ff;
+                color: #356bc6;
+            }
+
+            .status.error {
+                background-color: #fbdcdc;
+                color: #c53030;
+            }
+
+            .status.offline {
+                background-color: #f2f2f2;
+                color: #7e7e7e;
+            }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+        }
+        
+        .container {
+          height: 100vh;
+          width: 100%;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          background-color: #fcfcfc;
+        }
+        
+        @* .card {
+          border-radius: 10px;
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+          width: 600px;
+          height: 260px;
+          background-color: #ffffff;
+          padding: 10px 30px 40px;
+        } *@
+        
+        .card h3 {
+          font-size: 22px;
+          font-weight: 600;
+        
+        }
+        
+        .drop_box {
+          margin: 10px 0;
+          padding: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          border: 3px dotted #a3a3a3;
+          border-radius: 5px;
+        }
+        
+        .drop_box h4 {
+          font-size: 16px;
+          font-weight: 400;
+          color: #2e2e2e;
+        }
+        
+        .drop_box p {
+          margin-top: 10px;
+          margin-bottom: 20px;
+          font-size: 12px;
+          color: #a3a3a3;
+        }
+        
+        .btn {
+          text-decoration: none;
+          background-color: #005af0;
+          color: #ffffff;
+          padding: 10px 20px;
+          border: none;
+          outline: none;
+          transition: 0.3s;
+        }
+        
+        .btn:hover{
+          text-decoration: none;
+          background-color: #ffffff;
+          color: #005af0;
+          padding: 10px 20px;
+          border: none;
+          outline: 1px solid #010101;
+        }
+        .form input {
+          margin: 10px 0;
+          width: 100%;
+          background-color: #e2e2e2;
+          border: none;
+          outline: none;
+          padding: 12px 20px;
+          border-radius: 4px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-item">
+            <span>🖨️ Print Document</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📜 View History</span>
+        </div>
+        <div class="sidebar-item">
+            <span>💵 Buy Paper</span>
+        </div>
+        <div class="sidebar-item">
+            <span>📊 History</span>
+        </div>
+        @if(User.IsInRole("SPSO")){
+            <div class="sidebar-item">
+            <span>🖨️ Manage Printer</span>
+            </div>
+        }
+
+    </aside>
+    <div class="header">
+        <h1>Printing Document</h1>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Upload Files</h3>
+            <div class="drop_box">
+                <header>
+                    <h4>Select File here</h4>
+                </header>
+                <p>Files Supported: PDF, TXT, DOC , DOCX, PNG,#005af0 JPEP, BMP</p>
+                <input type="file" hidden accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+                <button class="btn">Add File</button>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

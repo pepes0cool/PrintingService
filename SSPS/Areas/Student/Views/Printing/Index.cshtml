@@ -1,0 +1,188 @@
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printing Document</title>
+    <style>
+        .upload-container {
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+
+        .upload-box {
+            border: 2px dashed #bbb;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .add-file-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .add-file-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .continue-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: gray;
+            border: none;
+            border-radius: 5px;
+            cursor: not-allowed;
+            transition: background-color 0.3s, cursor 0.3s;
+        }
+
+        .continue-btn.active {
+            background-color: #007bff;
+            cursor: pointer;
+        }
+
+          .file-preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .file-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            display: inline-block;
+            width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-card p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            word-wrap: break-word;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
+<main class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span>🖨️ Print Document</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📜 View History</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>💵 Buy Paper</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📊 History</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>🖨️ Manage Printer</span>
+                </div>
+            </aside>
+
+            <div class="header">
+                <h1>Print Document</h1>
+            </div>
+
+            <div class="upload-container">
+                <h2>Upload Document</h2>
+                <form id="upload-form" method="post" action="/Student/Printing/PrintA4">
+                    <div class="upload-box">
+                        <input type="file" id="file-input" class="file-input" accept=".pdf,.txt,.doc,.docx,.png,.jpeg,.bmp" />
+                        <label for="file-input" class="add-file-btn">Add File</label>
+                        <p>Files Supported: PDF, TXT, DOC, DOCX, PNG, JPEG, BMP</p>
+                    </div>
+                    <div id="file-preview" class="file-preview" style="display: none;">
+                        <div class="file-card">
+                            <p id="file-name"></p>
+                        </div>
+                    </div>
+                    <input type="hidden" id="user-id" name="obj.Id" value="" />
+                    <input type="hidden" id="num-page" name="numPage" value="5" />
+
+                    <button id="continue-btn" class="continue-btn" type="submit" disabled asp-controller="Printing" asp-action="PrintA4" asp-area="Student">Continue</button>
+                </form>
+            </div>
+            
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.getElementById('file-input');
+            const continueBtn = document.getElementById('continue-btn');
+            const filePreview = document.getElementById('file-preview');
+            const fileNameDisplay = document.getElementById('file-name');
+
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files.length > 0) {
+                    const fileName = fileInput.files[0].name; // Get the file name
+                    fileNameDisplay.textContent = `Uploaded File: ${fileName}`;
+                    filePreview.style.display = 'block'; // Show the file preview card
+
+                    continueBtn.disabled = false;
+                    continueBtn.classList.add('active');
+                } else {
+                    fileNameDisplay.textContent = '';
+                    filePreview.style.display = 'none'; // Hide the file preview card
+
+                    continueBtn.disabled = true;
+                    continueBtn.classList.remove('active');
+                }
+            });
+        });
+    </script>
+}

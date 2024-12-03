@@ -1,0 +1,137 @@
+@model User
+
+<!DOCTYPE html>
+<head>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 60px; /* Adjust to match the nav bar height */
+            left: 0;
+            width: 200px;
+            height: calc(100% - 60px); /* Subtract nav bar height */
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 60px; /* Prevent content from being under nav bar */
+            margin-left: 200px; /* Width of the sidebar */
+        }
+    </style>
+</head>
+<main class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span>🖨️ Print Document</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📜 View History</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>💵 Buy Paper</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📊 History</span>
+                </div>
+            </aside>
+
+            <!-- Main Content -->         
+        </div>
+    </div>
+</main>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 80px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .total {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            const pricePerPage = 500;
+            const numPages = document.getElementById('numPages').value;
+            const totalAmount = numPages * pricePerPage;
+            document.getElementById('total').textContent = totalAmount.toLocaleString() + ' VND';
+            document.getElementById('proceedBtn').disabled = numPages <= 0;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img src="~/img/bklogo1.png" alt="Logo">
+        </div>
+        <h2>Buy Pages</h2>
+        <label for="numPages">Number of pages:</label>
+        <input type="number" id="numPages" min="1" value="1" oninput="calculateTotal()">
+        <div class="total">
+            Total: <span id="total">500 VND</span>
+        </div>
+
+        <button id="proceedBtn" asp-action="BuyPages" asp-asp-controller="Buy">Proceed</button>
+    </div>
+</body>
+</html>

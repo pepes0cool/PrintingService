@@ -22,8 +22,5 @@
 		<ProjectReference Include="..\SSPS.Models\SSPS.Models.csproj" />
 		<ProjectReference Include="..\SSPS.Utility\SSPS.Utility.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Migrations\" />
-	</ItemGroup>
 	
 </Project>

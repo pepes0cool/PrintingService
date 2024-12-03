@@ -19,7 +19,7 @@ namespace SSPS.DataAccess.Repository
         }
         public void AddPage(User user, int numPage)
         {
-            var objFromDb = _db.users.FirstOrDefault(u => u.MSSV == user.MSSV);
+            var objFromDb = _db.users.FirstOrDefault(u => u.UserName == user.UserName);
             if (objFromDb != null)
             {
                 objFromDb.Name = user.Name;

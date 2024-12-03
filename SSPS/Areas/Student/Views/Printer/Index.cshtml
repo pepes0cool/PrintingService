@@ -197,6 +197,11 @@
             </div>
             <button class="button off">Off</button>
         </div> *@
+        @if(TempData["Notification"] != null){
+            <script>
+                alert('@TempData["Notification"]');
+            </script>
+        }
         @foreach (var obj in Model.OrderBy(u => u.Id)){
             <div class="card">
                 <div class="card-header" style="margin-top:5px">@obj.Name</div>

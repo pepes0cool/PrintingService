@@ -32,11 +32,8 @@ namespace SSPS.Areas.Student.Controllers
 
         public IActionResult Print(int? id)
         {
-            if (id == null || id == 0) return NotFound();
-
-            Printer? PrinterDb = _unitOfWork.Printer.Get(u => u.Id == id);
-            if (PrinterDb == null) return NotFound();
-            return View(PrinterDb);
+            TempData["Notification"] = "The request has been sent to printer!";
+            return RedirectToAction("Index");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

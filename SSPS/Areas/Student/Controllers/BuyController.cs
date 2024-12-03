@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SSPS.DataAccess;
@@ -24,9 +25,11 @@ namespace SSPS.Areas.Student.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var username = User.Identity.Name;
+            var user = _unitOfWork.User.Get(u => u.UserName == username);
+            return View(user);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -39,14 +42,11 @@ namespace SSPS.Areas.Student.Controllers
         [HttpPost]
         public IActionResult BuyPages(User obj, int numPage)
         {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.User.AddPage(obj, numPage);
-                _unitOfWork.Save();
-                TempData["Success"] = "Paper balance updated successfully!!";
-                return RedirectToAction("Index");
-            }
-            return View();
+            var username = User.Identity.Name;
+            var user = _unitOfWork.User.Get(u => u.UserName == username);
+            user.PaperBalance += numPage;
+            _unitOfWork.Save();
+            return View(user);
         }
     }
 }

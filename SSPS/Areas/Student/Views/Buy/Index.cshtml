@@ -1,87 +1,10 @@
 @model User
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Pages</title>
-    <style>
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 60px; /* Adjust to match the nav bar height */
-            left: 0;
-            width: 200px;
-            height: calc(100% - 60px); /* Subtract nav bar height */
-            background-color: #f8f9fa;
-        }
-
-        .sidebar-item {
-            padding: 10px;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 60px; /* Prevent content from being under nav bar */
-            margin-left: 200px; /* Width of the sidebar */
-        }
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            background-color: #fff;
-            text-align: center;
-        }
-        .logo {
-            margin-bottom: 20px;
-        }
-        .logo img {
-            width: 80px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 16px;
-        }
-        .total {
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #012bfe;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:disabled {
-
-            background-color: #ccc;
-        }
-    </style>
     <script>
         function calculateTotal() {
             const pricePerPage = 500;
@@ -115,27 +38,28 @@
             </div>
 
             <div class="container">
-                <div class="logo">
-                    <img src="~/img/bklogo1.png" alt="Logo">
+                <div class="balance">
+                    Current Balance: <span id="balance">@Model.PaperBalance</span>
                 </div>
-                
-                
+                <div class="logo">
+                    <img src="~/img/bklogo1.png" alt="Logo" width="200px">
+                </div>
+
+
                 <div class="balance">
                     Current Balance: <span id="balance"> @Model.PaperBalance</span>
                 </div>
                 <form asp-action="BuyPages" asp-controller="Buy" method="post">
                     <label for="numPages">Number of pages:</label>
-                    <input type="number" id="numPages" name="numPage" min="1" value="1" 
-                       oninput="calculateTotal(500)">
+                    <input type="number" id="numPages" name="numPage" min="1" value="1"
+                           oninput="calculateTotal(500)">
                     <div class="total">
                         Total: <span id="total">500 VND</span>
                     </div>
-                    <a asp-controller="Buy" asp-action="Buy Pages" asp-area="Student">
-                        <button id="proceedBtn" type="submit">Proceed</button>
-                    </a>
+                    
+                <button id="proceedBtn" asp-controller="Buy" asp-action="BuyPages" asp-area="Student">Proceed</button>
                 </form>
             </div>
         </div>
     </div>
 </main>
-</html>

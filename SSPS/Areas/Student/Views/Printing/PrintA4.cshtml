@@ -5,36 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set Option</title>
+    <title>Print Confirmation</title>
     <style>
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 60px; /* Adjust to match the nav bar height */
-            left: 0;
-            width: 200px;
-            height: calc(100% - 60px); /* Subtract nav bar height */
-            background-color: #f8f9fa;
-        }
-
-        .sidebar-item {
-            padding: 10px;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 60px; /* Prevent content from being under nav bar */
-            margin-left: 200px; /* Width of the sidebar */
-        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -51,87 +23,61 @@
             width: 300px;
             background-color: #fff;
             text-align: center;
-        }
-        .logo {
-            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .logo img {
             width: 80px;
         }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
+        .message {
+            font-size: 18px;
+            color: #333;
+            margin: 20px 0;
+        }
+        .balance {
             margin: 10px 0;
             font-size: 16px;
-        }
-        .total {
-            margin: 10px 0;
             font-weight: bold;
+            color: #012bfe;
         }
-        button {
+        .details {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .actions button {
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #5cb85c;
+            background-color: #012bfe;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        button:disabled {
-            background-color: #ccc;
+        .actions button:hover {
+            background-color: #0056b3;
         }
     </style>
-    <script>
-        function calculateTotal() {
-            const pricePerPage = 500;
-            const numPages = document.getElementById('numPages').value;
-            const totalAmount = numPages * pricePerPage;
-            document.getElementById('total').textContent = totalAmount.toLocaleString() + ' VND';
-            document.getElementById('proceedBtn').disabled = numPages <= 0;
-        }
-    </script>
 </head>
-<main class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <aside class="sidebar">
-                <div class="sidebar-item">
-                    <span>🖨️ Print Document</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>📜 View History</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>💵 Buy Paper</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>📊 History</span>
-                </div>
-            </aside>
-
-            <div class="header">
-                <h1>Print Document</h1>
-            </div>
-
-            <div class="container">
-                <div class="logo">
-                    <img src="~/img/bklogo1.png" alt="Logo">
-                </div>
-                <h2>Set option</h2>
-                
-                <div class="balance">
-                    Current Balance: <span id="balance"> @Model.PaperBalance</span>
-                </div>
-                <form asp-action="PrintA4" asp-controller="Printing">
-                  <label for="numPages">Number of pages:</label>
-                  <input type="number" id="numPages" min="1" value="1" oninput="calculateTotal()">
-                  <div class="total">
-                      Total: <span id="total">500 VND</span>
-                  </div>
-                  <button id="proceedBtn" type="submit">Proceed</button>
-                </form>
-            </div>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="~/img/bklogo1.png" alt="Logo">
+        </div>
+        <div class="message">
+            Your document has been printed successfully!
+        </div>
+        <div class="details">
+            <p><strong>Number of Pages Printed:</strong> 5</p>
+            <p><strong>Total Cost:</strong> 2.500 VND</p>
+        </div>
+        <div class="balance">
+            Updated Balance: <span>@Model.PaperBalance</span>
+        </div>
+        <div class="actions">
+            <a asp-controller="Home" asp-action="Index" asp-area="Student">
+                <button>Go Back to Home</button>
+            </a>
+        </div>
     </div>
-    </div>
-</main>
-
+</body>
+</html>

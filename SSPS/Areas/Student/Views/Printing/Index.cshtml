@@ -140,7 +140,7 @@
 
             <div class="upload-container">
                 <h2>Upload Document</h2>
-                <form id="upload-form" method="post" action="/Student/Printing/PrintA4">
+                <form id="upload-form" method="post" action="/Student/Printing/Option">
                     <div class="upload-box">
                         <input type="file" id="file-input" class="file-input" accept=".pdf,.txt,.doc,.docx,.png,.jpeg,.bmp" />
                         <label for="file-input" class="add-file-btn">Add File</label>
@@ -153,8 +153,9 @@
                     </div>
                     <input type="hidden" id="user-id" name="obj.Id" value="" />
                     <input type="hidden" id="num-page" name="numPage" value="5" />
-
-                    <button id="continue-btn" class="continue-btn" type="submit" disabled asp-controller="Printing" asp-action="PrintA4" asp-area="Student">Continue</button>
+                    <a asp-controller="Printing" asp-action="Option" asp-area="Student"></a>
+                        <button id="continue-btn" class="continue-btn" type="submit" disabled>Continue</button>
+                    </a>
                 </form>
             </div>
             

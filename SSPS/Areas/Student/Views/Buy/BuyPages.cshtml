@@ -3,96 +3,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Pages - Success</title>
     <style>
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 60px; /* Adjust to match the nav bar height */
-            left: 0;
-            width: 200px;
-            height: calc(100% - 60px); /* Subtract nav bar height */
-            background-color: #f8f9fa;
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
         }
 
-        .sidebar-item {
-            padding: 10px;
+        .success-icon {
+            font-size: 50px;
+            color: #28a745;
+            margin-bottom: 20px;
         }
 
-        /* Main Content */
-        .main-content {
-            margin-top: 60px; /* Prevent content from being under nav bar */
-            margin-left: 200px; /* Width of the sidebar */
+        .success-message {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .balance {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #012bfe;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #0047ab;
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-item">
-            <span>🖨️ Print Document</span>
+    <div class="container">
+        <div class="success-icon">✔</div>
+        <div class="success-message">
+            Your purchase was successful! Thank you for buying pages.
         </div>
-        <div class="sidebar-item">
-            <span>📜 View History</span>
+        <div class="balance">
+            Updated Balance: <strong>@Model.PaperBalance</strong> pages
         </div>
-        <div class="sidebar-item">
-            <span>💵 Buy Paper</span>
-        </div>
-        <div class="sidebar-item">
-            <span>📊 History</span>
-        </div>
-        <div class="sidebar-item">
-            <span>🖨️ Manage Printer</span>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="card shadow border-0 mt-4 col-12 col-md-10 col-lg-8" style="background-color:aliceblue">
-                    <div class="card-header border border-white p-3" style="background-color:#8A70D6;
-                        border: 2px solid #FFFFFF; margin-top:10px">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h2 class="text-white py-2">Buy Papers</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body p-4">
-                        <form method="post" class="pb-3">
-                            <div class="border p-3">
-                                <div class="form-floating py-2">
-                                    <input asp-for="PaperBalance" class="form-control border-0 shadow" />
-                                    <label asp-for="PaperBalance" class="ms-2"></label>
-                                    <span asp-validation-for="PaperBalance" class="text-danger"></span>
-                                </div>
-                                <div class="row pt-3">
-                                    <div class=" col-md-6">
-                                        <button type="submit" class="btn btn-primary form-control">Number of pages</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a asp-area="Student" asp-controller="Buy" asp-action="Index" class="btn btn-outline-primary border form-control"
-                                        style="background-color:seagreen">
-                                            Back
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+        <a class="back-button" asp-controller="Home" asp-action="Index" asp-area="Student">Back to Home</a>
+    </div>
 </body>
 </html>
-
-
-

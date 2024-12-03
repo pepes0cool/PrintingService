@@ -1,7 +1,11 @@
 @model User
 
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Pages</title>
     <style>
         /* Navigation Bar */
         .navbar {
@@ -31,38 +35,6 @@
             margin-top: 60px; /* Prevent content from being under nav bar */
             margin-left: 200px; /* Width of the sidebar */
         }
-    </style>
-</head>
-<main class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <aside class="sidebar">
-                <div class="sidebar-item">
-                    <span>🖨️ Print Document</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>📜 View History</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>💵 Buy Paper</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>📊 History</span>
-                </div>
-            </aside>
-
-            <!-- Main Content -->         
-        </div>
-    </div>
-</main>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Pages</title>
-    <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -100,12 +72,13 @@
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #5cb85c;
+            background-color: #012bfe;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
         button:disabled {
+
             background-color: #ccc;
         }
     </style>
@@ -119,19 +92,50 @@
         }
     </script>
 </head>
-<body>
-    <div class="container">
-        <div class="logo">
-            <img src="img src="~/img/bklogo1.png" alt="Logo">
-        </div>
-        <h2>Buy Pages</h2>
-        <label for="numPages">Number of pages:</label>
-        <input type="number" id="numPages" min="1" value="1" oninput="calculateTotal()">
-        <div class="total">
-            Total: <span id="total">500 VND</span>
-        </div>
+<main class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span>🖨️ Print Document</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📜 View History</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>💵 Buy Paper</span>
+                </div>
+                <div class="sidebar-item">
+                    <span>📊 History</span>
+                </div>
+            </aside>
 
-        <button id="proceedBtn" asp-action="BuyPages" asp-asp-controller="Buy">Proceed</button>
+            <div class="header">
+                <h1>Buy Pages</h1>
+            </div>
+
+            <div class="container">
+                <div class="logo">
+                    <img src="~/img/bklogo1.png" alt="Logo">
+                </div>
+                
+                
+                <div class="balance">
+                    Current Balance: <span id="balance"> @Model.PaperBalance</span>
+                </div>
+                <form asp-action="BuyPages" asp-controller="Buy" method="post">
+                    <label for="numPages">Number of pages:</label>
+                    <input type="number" id="numPages" name="numPage" min="1" value="1" 
+                       oninput="calculateTotal(500)">
+                    <div class="total">
+                        Total: <span id="total">500 VND</span>
+                    </div>
+                    <a asp-controller="Buy" asp-action="Buy Pages" asp-area="Student">
+                        <button id="proceedBtn" type="submit">Proceed</button>
+                    </a>
+                </form>
+            </div>
+        </div>
     </div>
-</body>
+</main>
 </html>

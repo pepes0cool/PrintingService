@@ -26,14 +26,5 @@ namespace SSPS.DataAccess.Repository
                 objFromDb.PaperBalance = user.PaperBalance + numPage;
             }
         }
-        public void PrintA4(User user, int numPage)
-        {
-            var objFromDb = _db.users.FirstOrDefault(u => u.MSSV == user.MSSV);
-            if (objFromDb != null)
-            {
-                objFromDb.Name = user.Name;
-                objFromDb.PaperBalance = user.PaperBalance - numPage;
-            }
-        }
     }
 }

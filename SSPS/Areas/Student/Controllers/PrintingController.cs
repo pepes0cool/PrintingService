@@ -28,6 +28,10 @@ namespace SSPS.Areas.Student.Controllers
         {
             return View();
         }
+        public IActionResult Option()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -42,7 +46,7 @@ namespace SSPS.Areas.Student.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.User.AddPage(obj, numPage);
+                _unitOfWork.User.AddPage(obj, -numPage);
                 _unitOfWork.Save();
                 TempData["Success"] = "Printing updated successfully!!";
                 return RedirectToAction("Index");

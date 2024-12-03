@@ -67,14 +67,14 @@
             Your document has been printed successfully!
         </div>
         <div class="details">
-            <p><strong>Number of Pages Printed:</strong> @ViewData["numPages"]</p>
-            <p><strong>Total Cost:</strong> @ViewData["totalCost"] VND</p>
+            <p><strong>Number of Pages Printed:</strong> 5</p>
+            <p><strong>Total Cost:</strong> 2.500 VND</p>
         </div>
         <div class="balance">
             Updated Balance: <span>@Model.PaperBalance</span>
         </div>
         <div class="actions">
-            <a asp-action="Index" asp-controller="Printing">
+            <a asp-controller="Home" asp-action="Index" asp-area="Student">
                 <button>Go Back to Home</button>
             </a>
         </div>

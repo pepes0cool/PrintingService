@@ -47,14 +47,20 @@ namespace SSPS.Areas.Student.Controllers
             {
                 return RedirectToAction("Error");
             }
-            var historyRec = _unitOfWork.History.GetAll(
+            List<History> historyRec;
+            if (User.IsInRole("SPSO"))
+            {
+                historyRec = _unitOfWork.History.GetAll(includeProperties: "User,Printer").ToList();
+            }
+            else
+            {
+                historyRec = _unitOfWork.History.GetAll(
                                 filter: hr => hr.UserID == user.Id,
                                 includeProperties: "User,Printer").ToList();
-            //var medicalRecords = _db.MedicalRecords
-            //                       .Include(mr => mr.User)
-            //                       .Where(mr => mr.UserID == userId)
-            //                       .ToList();
-
+            }
+            //historyRec = _unitOfWork.History.GetAll(
+            //                    filter: hr => hr.UserID == user.Id,
+            //                    includeProperties: "User,Printer").ToList();
             return View(historyRec);
         }
     }

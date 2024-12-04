@@ -114,6 +114,7 @@
     </style>
 </head>
 <main class="main-content">
+   
     <div class="container-fluid">
         <div class="row">
             <aside class="sidebar">
@@ -124,14 +125,26 @@
                     <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
                 </div>
                 <div class="sidebar-item">
-                    <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy Paper</a>
+                    <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy tokens</a>
                 </div>
+                @if (User.IsInRole("SPSO"))
+                {
+                    <div class="sidebar-item">
+                        <a asp-controller="Printer" asp-action="Index" asp-area="SPSO" class="text-decoration-none">🖨️ Manage Printer</a>
+                    </div>
+                }
             </aside>
 
             <div class="header">
                 <h1>Print Document</h1>
             </div>
             <div class="container-fluid">Paper balance: @Model.PaperBalance</div>
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
             <div class="upload-container">
                 <h2>Upload Document</h2>
                 <form id="upload-form" method="post" action="/Student/Printing/Option">

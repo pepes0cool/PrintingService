@@ -54,20 +54,20 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">
-            <span>🖨️ Print Document</span>
+            <a asp-controller="Printing" asp-action="Index" asp-area="Student" class="text-decoration-none">🖨️ Print Document</a>
         </div>
         <div class="sidebar-item">
-            <span>📜 View History</span>
+            <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
         </div>
         <div class="sidebar-item">
-            <span>💵 Buy Paper</span>
+            <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy tokens</a>
         </div>
-        <div class="sidebar-item">
-            <span>📊 History</span>
-        </div>
-        <div class="sidebar-item">
-            <span>🖨️ Manage Printer</span>
-        </div>
+        @if (User.IsInRole("SPSO"))
+        {
+            <div class="sidebar-item">
+                <a asp-controller="Printer" asp-action="Index" asp-area="SPSO" class="text-decoration-none">🖨️ Manage Printer</a>
+            </div>
+        }
     </aside>
 
     <main class="main-content">

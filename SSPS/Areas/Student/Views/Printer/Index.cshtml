@@ -139,13 +139,13 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">
-            <a asp-controller="Printing" asp-action="Index" asp-area="Student" class="text-decoration-none">🖨️ Print Document</a>
+            <a asp-controller="Printing" asp-action="Index" asp-area="Student"class="text-decoration-none">🖨️ Print Document</a>
         </div>
         <div class="sidebar-item">
             <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
         </div>
         <div class="sidebar-item">
-            <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy Paper</a>
+            <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy tokens</a>
         </div>
         @if(User.IsInRole("SPSO")){
             <div class="sidebar-item">
@@ -195,9 +195,9 @@
             <button class="button off">Off</button>
         </div> *@
         @if(TempData["Notification"] != null){
-            <script>
-                alert('@TempData["Notification"]');
-            </script>
+            <div class="alert alert-info" role="alert">
+                @TempData["Notification"]
+            </div>
         }
         @foreach (var obj in Model.OrderBy(u => u.Id))
         {

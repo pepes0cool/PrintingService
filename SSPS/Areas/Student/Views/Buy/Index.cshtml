@@ -15,6 +15,36 @@
         }
     </script>
 </head>
+<style>
+    /* Navigation Bar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 60px; /* Adjust to match the nav bar height */
+        left: 0;
+        width: 200px;
+        height: calc(100% - 60px); /* Subtract nav bar height */
+        background-color: #f8f9fa;
+    }
+
+    .sidebar-item {
+        padding: 10px;
+    }
+
+    /* Main Content */
+    .main-content {
+        margin-top: 60px; /* Prevent content from being under nav bar */
+        margin-left: 200px; /* Width of the sidebar */
+    }
+</style>
 <main class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -26,12 +56,18 @@
                     <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
                 </div>
                 <div class="sidebar-item">
-                    <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy Paper</a>
+                    <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy tokens</a>
                 </div>
+                @if (User.IsInRole("SPSO"))
+                {
+                    <div class="sidebar-item">
+                        <a asp-controller="Printer" asp-action="Index" asp-area="SPSO" class="text-decoration-none">🖨️ Manage Printer</a>
+                    </div>
+                }
             </aside>
 
             <div class="header">
-                <h1>Buy Pages</h1>
+                <h1>Buy tokens</h1>
             </div>
 
             <div class="container">

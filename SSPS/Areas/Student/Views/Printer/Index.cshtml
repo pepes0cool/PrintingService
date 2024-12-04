@@ -139,16 +139,13 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-item">
-            <span>🖨️ Print Document</span>
+            <a asp-controller="Printing" asp-action="Index" asp-area="Student" class="text-decoration-none">🖨️ Print Document</a>
         </div>
         <div class="sidebar-item">
-            <span>📜 View History</span>
+            <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
         </div>
         <div class="sidebar-item">
-            <span>💵 Buy Paper</span>
-        </div>
-        <div class="sidebar-item">
-            <span>📊 History</span>
+            <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy Paper</a>
         </div>
         @if(User.IsInRole("SPSO")){
             <div class="sidebar-item">
@@ -202,18 +199,19 @@
                 alert('@TempData["Notification"]');
             </script>
         }
-        @foreach (var obj in Model.OrderBy(u => u.Id)){
+        @foreach (var obj in Model.OrderBy(u => u.Id))
+        {
             <div class="card">
                 <div class="card-header" style="margin-top:5px">@obj.Name</div>
-                <div class="img-fluid" >
+                <div class="img-fluid">
                     <img src="~/img/printer.png" style="width:100px" />
                 </div>
-				<div class="status ready" style="margin-top:5px">Status: Ready</div>
-				<div class="metrics">
-					<div>Paper left: @obj.paperNumber</div>
-				</div>
-				<button class="button on" style="margin-top:5px">ON</button>
-                <a asp-controller="Printer" asp-action="Print" asp-area="Student" asp-route-id="@obj.Id" class="button" style="margin-top:5px">Choose this printer</a>
+                <div class="status ready" style="margin-top:5px">Status: Ready</div>
+                <button class="button on" style="margin-top:5px">ON</button>
+                <form asp-controller="Printing" asp-action="PrintA4" asp-area="Student" method="post">
+                    <input type="hidden" name="printerId" value="@obj.Id" />
+                    <button type="submit" class="button" style="margin-top:5px">Choose this printer</button>
+                </form>
             </div>
         }
     </div>

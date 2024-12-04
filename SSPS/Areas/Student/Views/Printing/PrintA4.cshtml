@@ -1,82 +1,21 @@
-@model User
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Confirmation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            background-color: #fff;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .logo img {
-            width: 80px;
-        }
-        .message {
-            font-size: 18px;
-            color: #333;
-            margin: 20px 0;
-        }
-        .balance {
-            margin: 10px 0;
-            font-size: 16px;
-            font-weight: bold;
-            color: #012bfe;
-        }
-        .details {
-            font-size: 14px;
-            color: #555;
-            margin: 10px 0;
-        }
-        .actions button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #012bfe;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .actions button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <img src="~/img/bklogo1.png" alt="Logo">
+            <img src="~/img/bklogo1.png" alt="Logo" width="300px">
         </div>
         <div class="message">
             Your document has been printed successfully!
         </div>
-        <div class="details">
-            <p><strong>Number of Pages Printed:</strong> 5</p>
-            <p><strong>Total Cost:</strong> 2.500 VND</p>
-        </div>
-        <div class="balance">
-            Updated Balance: <span>@Model.PaperBalance</span>
-        </div>
         <div class="actions">
-            <a asp-controller="Home" asp-action="Index" asp-area="Student">
-                <button>Go Back to Home</button>
-            </a>
+                <button><a asp-controller="Home" asp-action="Index" asp-area="Student"> Back to Home</a></button>
         </div>
     </div>
 </body>

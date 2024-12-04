@@ -118,26 +118,20 @@
         <div class="row">
             <aside class="sidebar">
                 <div class="sidebar-item">
-                    <span>🖨️ Print Document</span>
+                    <a asp-controller="Printing" asp-action="Index" asp-area="Student" class="text-decoration-none">🖨️ Print Document</a>
                 </div>
                 <div class="sidebar-item">
-                    <span>📜 View History</span>
+                    <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
                 </div>
                 <div class="sidebar-item">
-                    <span>💵 Buy Paper</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>📊 History</span>
-                </div>
-                <div class="sidebar-item">
-                    <span>🖨️ Manage Printer</span>
+                    <a asp-controller="Buy" asp-action="Index" asp-area="Student" class="text-decoration-none">💵 Buy Paper</a>
                 </div>
             </aside>
 
             <div class="header">
                 <h1>Print Document</h1>
             </div>
-
+            <div class="container-fluid">Paper balance: @Model.PaperBalance</div>
             <div class="upload-container">
                 <h2>Upload Document</h2>
                 <form id="upload-form" method="post" action="/Student/Printing/Option">
@@ -158,7 +152,10 @@
                     </a>
                 </form>
             </div>
-            
+            </div>
+            </div>
+            </main>
+            </html>
 
 @section Scripts {
     <script>
@@ -179,7 +176,6 @@
                 } else {
                     fileNameDisplay.textContent = '';
                     filePreview.style.display = 'none'; // Hide the file preview card
-
                     continueBtn.disabled = true;
                     continueBtn.classList.remove('active');
                 }

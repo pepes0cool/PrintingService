@@ -63,15 +63,11 @@
             <a asp-controller="Printing" asp-action="Index" asp-area="Student"class="text-decoration-none">🖨️ Print Document</a>
         </div>
         <div class="sidebar-item">
-            <span>📜 View History</span>
+            <a asp-controller="Home" asp-action="ViewHistory" asp-area="Student" class="text-decoration-none"> 📜 View History </a>
         </div>
         <div class="sidebar-item">
             <a asp-controller="Buy" asp-action="Index" asp-area="Student"class="text-decoration-none">💵 Buy Paper</a>
         </div>
-        <div class="sidebar-item">
-            <span>📊 History</span>
-        </div>
-
     </aside>
 
     <main class="main-content">
@@ -80,7 +76,7 @@
 			@if (SignInManager.IsSignedIn(User))
 			{
                 <h1 class="role-title">@user.UserName</h1>
-			})
+			}
 
             <div class="fact-box">
                 <p class="fact-text">

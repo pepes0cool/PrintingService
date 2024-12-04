@@ -26,7 +26,9 @@ namespace SSPS.Areas.Student.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var username = User.Identity.Name;
+            var user = _unitOfWork.User.Get(u => u.UserName == username);
+            return View(user);
         }
         public IActionResult Option()
         {
@@ -41,17 +43,43 @@ namespace SSPS.Areas.Student.Controllers
 
 
         [HttpPost]
-        
-        public IActionResult PrintA4(User obj, int numPage)
+        public IActionResult PrintA4(int printerId)
         {
-            if (ModelState.IsValid)
+            var username = User.Identity.Name;
+            var user = _unitOfWork.User.Get(u => u.UserName == username);
+            if (user == null)
             {
-                _unitOfWork.User.AddPage(obj, -numPage);
-                _unitOfWork.Save();
-                TempData["Success"] = "Printing updated successfully!!";
+                return RedirectToAction("Error");
+            }
+
+            var printer = _unitOfWork.Printer.Get(p => p.Id == printerId);
+            if (printer == null)
+            {
+                return RedirectToAction("Error");
+            }
+
+            if (user.PaperBalance < 1)
+            {
+                TempData["Error"] = "Insufficient paper balance.";
                 return RedirectToAction("Index");
             }
-            return View();
+
+            user.PaperBalance -= 1;
+
+            var historyRecord = new History
+            {
+                UserID = user.Id,
+                PrinterID = printer.Id,
+                paperNum = 1,
+                status = "Printed",
+                date = DateTime.Now
+            };
+            _unitOfWork.History.Add(historyRecord);
+            _unitOfWork.Save();
+
+            TempData["Success"] = "Printing updated successfully!";
+            return View(user);
         }
+
     }
 }

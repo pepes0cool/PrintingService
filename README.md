@@ -17,6 +17,10 @@ Configure the connection string:
 
 Open the appsettings.json file in the project directory.
 Update the connection string to match your MS SQL Server configuration.
+Then add migration, update database following this command in package manager console:(Visual Studio)
+add-migration <your Migration name>
+update-database
+Then you are all set !
 Run the application:
 
 Open the solution file in Visual Studio.

@@ -1,41 +1,171 @@
-﻿@model IEnumerable<SSPS.Models.History>
+﻿@* @model IEnumerable<SSPS.Models.History>
 
 <div class="container my-4">
-    <div class="card shadow border-0">
+    <div class="card border-0">
         <div class="card-header bg-secondary bg-gradient text-light ml-0 py-4">
             <div class="row px-4">
                 <div class="col-6">
-                    <h2 class="pt-2 text-black align-content-center">
+                    <h2 class="pt-2 align-content-center" style="font-family: 'Galdeano', serif; color: #7F56D9;">
                         History
                     </h2>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary">Filter</button>
                 </div>
             </div>
         </div>
         <div class="card-body my-4">
-            <div class="row">
-                @if (Model.Any())
-                {
-                    @foreach (var history in Model)
+            <table class="table table-striped table-hover table-bordered rounded" style="border: 15px solid #000000; border-radius: 12px; overflow: hidden;">
+                <thead class="bg-light" style="border-bottom: 5px solid #000000;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Date (dd/mm/yyyy)</th>
+                        <th>Printer Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
                     {
-                        <div class="row border-bottom pb-3">
-                            <div class="col-12 pt-md-3" style="align-content">
-                                <h5 class="text-uppercase text-secondary"><strong>Record ID: @history.Id</strong></h5>
-                                <h5 class="text-uppercase text-secondary"><strong> Printer Name: @history.Printer.Name</strong>
-                                    <strong> User: @history.User.Name</strong>
-                                </h5>
-                                <h5 class="text-uppercase text-secondary"><strong>Date: @history.status</strong> <strong>at @history.date</strong></h5>
-
-                            </div>
-                        </div>
+                        @foreach (var history in Model)
+                        {
+                            <tr>
+                                <td>@history.Id</td>
+                                <td>@history.date.ToString("dd/MM/yyyy HH:mm tt")</td>
+                                <td>@history.Printer.Name</td>
+                            </tr>
+                        }
                     }
-                }
-                else
-                {
-                    <div class="col-12 text-center py-4">
-                        <p class="text-muted">No records available at the moment.</p>
-                    </div>
-                }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">No records available at the moment.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>border-collapse: separate;
+</div> *@
+
+@* @model IEnumerable<SSPS.Models.History>
+
+<div class="container my-4">
+    <div class="card border-0">
+        <div class="card-header bg-secondary bg-gradient text-light ml-0 py-4">
+            <div class="row px-4">
+                <div class="col-6">
+                    <h2 class="pt-2 align-content-center" style="font-family: 'Galdeano', serif; color: #7F56D9;">
+                        History
+                    </h2>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary">Filter</button>
+                </div>
             </div>
+        </div>
+        <div class="card-body my-4">
+            <table class="table table-striped table-hover rounded" 
+                   style="border: 3px solid #000000; border-radius: 24px;border-collapse: collapse; overflow: hidden; width: 100%;">
+                <thead class="bg-light" style="border-bottom: 2px solid #000000;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Date (dd/mm/yyyy)</th>
+                        <th>Printer Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var history in Model)
+                        {
+                            <tr>
+                                <td>@history.Id</td>
+                                <td>@history.date.ToString("dd/MM/yyyy HH:mm tt")</td>
+                                <td>@history.Printer.Name</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">No records available at the moment.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> *@
+
+@model IEnumerable<SSPS.Models.History>
+
+<div class="container my-4">
+    <div class="card border-0">
+        <div class="card-header bg-secondary bg-gradient text-light ml-0 py-4">
+            <div class="row px-4">
+                <div class="col-6">
+                    <h2 class="pt-2 align-content-center" style="font-family: 'Galdeano', serif; color: #7F56D9;">
+                        History
+                    </h2>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body my-4">
+            <table class="table table-striped table-hover rounded" 
+                   style="border: 3px solid #000000; border-radius: 24px; border-collapse: collapse; overflow: hidden; width: 100%;">
+                <thead class="bg-light" style="border-bottom: 2px solid #000000;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Date (dd/mm/yyyy)</th>
+                        <th>Printer Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        @foreach (var history in Model)
+                        {
+                            <tr>
+                                <td>@history.Id</td>
+                                <td>@history.date.ToString("dd/MM/yyyy HH:mm tt")</td>
+                                <td>@history.Printer.Name</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">No records available at the moment.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Pagination Placeholder -->
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
+
+<style>
+    /* Ensure footer doesn't overlap with the table */
+    body {
+        padding-bottom: 50px;
+    }
+</style>
+

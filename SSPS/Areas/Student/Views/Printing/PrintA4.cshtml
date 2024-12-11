@@ -4,18 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Print Confirmation</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .confirmation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .confirmation-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 1.5rem;
+            color: #343A40;
+            margin-bottom: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #7F56D9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #6D4BBE;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #6C757D;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="~/img/bklogo1.png" alt="Logo" width="300px">
-        </div>
-        <div class="message">
-            Your document has been printed successfully!
-        </div>
-        <div class="actions">
-                <button><a asp-controller="Home" asp-action="Index" asp-area="Student"> Back to Home</a></button>
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="logo">
+                <img src="~/img/bklogo1.png" alt="Logo">
+            </div>
+            <div class="message">
+                Your document has been printed successfully!
+            </div>
+            <a href="/" class="back-button">Back to Home</a>
         </div>
     </div>
 </body>

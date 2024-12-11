@@ -51,6 +51,7 @@
             color: #7F56D9;
             font-size: 32px;
             margin-bottom: 20px;
+            align-content: center;
         }
 
         .balance {
@@ -61,7 +62,7 @@
 
         .logo img {
             margin: 16px 0;
-            width: 44px;
+            width: 300px;
         }
 
         label {
@@ -130,7 +131,7 @@
                 }
             </aside>
 
-            <div class="header">
+            <div class="header align-content-center">
                 <h1>Buy tokens</h1>
             </div>
 
@@ -139,7 +140,7 @@
                         Current Balance: <span id="balance">@Model.PaperBalance</span>
                     </div>
                     <div class="logo">
-                        <img src="~/img/bklogo1.png" alt="Logo" width="150px">
+                        <img src="~/img/bklogo1.png" alt="Logo">
                     </div>
 
                     <form asp-action="BuyPages" asp-controller="Buy" method="post">

@@ -25,4 +25,5 @@ Run the application:
 
 Open the solution file in Visual Studio.
 Build the project to restore dependencies.
-Start the application by running it locally.
+Start the application by running it locally.  
+You can create new account in the application, any mail will be 'Student' role, If the mail is 'SPSO@hcmut.edu.vn', the user will be assign to SPSO role.
